@@ -18,10 +18,10 @@ __pycache__/
 
 # ── Data Files (raw data — can be large) ──────────────────────
 # Comment these out if you want to commit data to the repo
-data/raw/*.json
-data/raw/*.csv
-data/processed/*.csv
-data/processed/*.json
+# data/raw/*.json
+# data/raw/*.csv
+# data/processed/*.csv
+# data/processed/*.json
 
 # ── Keep folder structure but not contents ────────────────────
 !data/raw/.gitkeep

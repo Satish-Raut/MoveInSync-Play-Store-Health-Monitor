@@ -1,0 +1,47 @@
+{
+  "initial_count": 2400,
+  "duplicates_removed": 0,
+  "empty_text_reviews": 0,
+  "language_distribution": {
+    "en": 2078,
+    "af": 64,
+    "it": 33,
+    "fr": 25,
+    "nl": 24,
+    "ro": 23,
+    "no": 19,
+    "ca": 18,
+    "es": 16,
+    "da": 15,
+    "so": 14,
+    "unknown": 13,
+    "et": 9,
+    "id": 6,
+    "pl": 6,
+    "tl": 6,
+    "cy": 6,
+    "hr": 5,
+    "cs": 4,
+    "tr": 3,
+    "sv": 3,
+    "sl": 3,
+    "de": 2,
+    "sk": 2,
+    "bn": 1,
+    "lv": 1,
+    "pt": 1
+  },
+  "rating_distribution": {
+    "1": 800,
+    "2": 400,
+    "3": 400,
+    "4": 400,
+    "5": 400
+  },
+  "date_range": {
+    "oldest": "2022-06-06",
+    "newest": "2026-10-11"
+  },
+  "processed_timestamp": "2026-10-13T02:02:29.154295",
+  "final_clean_count": 2400
+}

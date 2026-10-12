@@ -1,0 +1,26 @@
+{
+  "app_id": "com.moveinsync.ets",
+  "app_name": "MoveInSync For Employees",
+  "scrape_timestamp": "2026-10-12T19:24:38.879693+00:00",
+  "total_reviews": 2400,
+  "date_range": {
+    "oldest": "2022-06-06T10:09:45",
+    "newest": "2026-10-11T11:45:45"
+  },
+  "rating_distribution": {
+    "1": 800,
+    "2": 400,
+    "3": 400,
+    "4": 400,
+    "5": 400
+  },
+  "current_app_rating": 4.638811,
+  "total_app_ratings": 114880,
+  "app_installs": "1,000,000+",
+  "app_version": "12.19.0",
+  "scrape_settings": {
+    "language": "en",
+    "country": "in",
+    "max_reviews": 2000
+  }
+}
