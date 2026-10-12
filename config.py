@@ -37,6 +37,8 @@ ANALYZED_JSON_PATH = os.path.join(PROCESSED_DATA_DIR, "reviews_analyzed.json")
 ANALYSIS_SUMMARY_PATH = os.path.join(PROCESSED_DATA_DIR, "analysis_summary.json")
 
 # ENV variables
+from dotenv import load_dotenv
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 

@@ -1,0 +1,229 @@
+{
+  "Cab Booking Issues": {
+    "primary_symptoms": [
+      "Inefficient & Illogical Routing leading to excessively long commutes (e.g., 2.5 hours for a 40-min journey, clubbing distant passengers).",
+      "Inaccurate, constantly changing ETAs and poor predictability of cab arrival/journey times.",
+      "Unreachable or unresponsive Customer Support/Helpdesk, coupled with a lack of in-app feedback mechanisms.",
+      "Critical mobile app stability and performance issues, including slow loading, persistent incorrect notifications, and booking failures."
+    ],
+    "root_causes": [
+      {
+        "cause": "Sub-optimal Routing Algorithm",
+        "explanation": "The core routing engine (backend) is failing to generate efficient paths, prioritize logical ride-sharing, or adequately integrate real-time traffic and geospatial data, leading to the 'cross-country pilgrimages' and extreme commute times.",
+        "component": "Backend / Data Science"
+      },
+      {
+        "cause": "Operational Gaps & Poor Fleet/Driver Management",
+        "explanation": "Issues like drivers not initiating contact (waiting an hour without calling), support lines disconnecting, and general unresponsiveness point to breakdowns in fleet operations, driver training, and customer support infrastructure.",
+        "component": "Fleet Ops / Support Ops"
+      },
+      {
+        "cause": "Mobile App Quality & Missing Core UX Features",
+        "explanation": "The mobile application itself suffers from performance issues (slow loading), critical bugs (booking, incorrect notifications), and lacks essential user experience elements like direct feedback options, profile management (mobile number update), and comprehensive trip views.",
+        "component": "Mobile App / Product"
+      }
+    ],
+    "recommended_actions": [
+      {
+        "title": "Overhaul Routing Algorithm & ETA Prediction",
+        "team": "Backend, Data Science, Product",
+        "impact": "High",
+        "effort": "High",
+        "description": "Completely redesign and implement a new routing engine focusing on real-time traffic integration, dynamic path optimization, intelligent ride-sharing logic (minimizing detours for co-passengers), and highly accurate ETA prediction. Conduct extensive A/B testing and simulations before rollout."
+      },
+      {
+        "title": "Strengthen Customer Support & Driver Communication",
+        "team": "Ops, Mobile, Backend",
+        "impact": "High",
+        "effort": "Medium",
+        "description": "Improve helpdesk reliability and accessibility (e.g., multiple channels like in-app chat, call back feature). Implement mandatory driver communication protocols (e.g., automated call/SMS on arrival/delay). Introduce an in-app trip feedback/rating system for passengers to provide immediate input on routing, driver behavior, etc."
+      },
+      {
+        "title": "Enhance Mobile App Performance & Core UX",
+        "team": "Mobile, Product",
+        "impact": "Medium",
+        "effort": "Medium",
+        "description": "Prioritize and resolve critical app bugs causing slow loading, booking failures, and incorrect push notifications. Implement key missing features identified by users, such as self-service mobile number updates, a monthly trip view, and more intuitive UI for seat selection and booking management."
+      }
+    ],
+    "rating_recovery_estimate": "+0.5 to +0.8 stars",
+    "priority_rank": "P0 - Critical",
+    "affected_team": "Backend Routing & Fleet Algorithm"
+  },
+  "Notifications & OTP": {
+    "primary_symptoms": [
+      "Users are frequently not receiving OTPs (via SMS, WhatsApp, Email) or experiencing significant delays, preventing successful login and ride verification.",
+      "Notifications are inconsistent: either not displaying, disappearing prematurely, being excessively frequent ('spammy' pop-ups for cab delays), or users being forced to enable them.",
+      "The app exhibits a critical reliance on constant network calls for basic ride details and verification, leading to unresponsiveness and usability issues in areas with poor or intermittent internet connectivity."
+    ],
+    "root_causes": [
+      "**Unreliable OTP Delivery Backend & Integration (Backend, Ops):** Issues stem from inconsistent performance of third-party SMS/email/WhatsApp gateway providers (e.g., throttling, deliverability blocks, high latency) or flaws within the backend's OTP generation, distribution logic, and lack of robust retry mechanisms. This is a core 'Backend' and 'Ops' problem affecting delivery channels.",
+      "**Poor Mobile App UI/UX for OTP & Notifications (Mobile App, Product):** The mobile application has fundamental design and implementation flaws in how it handles dynamic content like OTPs (e.g., OTP disappearing behind other UI elements, poor input field management) and notifications (e.g., notification stack overflow, lack of user control over frequency, forced enablement policies). This is primarily a 'Mobile App' and 'Product' UX challenge.",
+      "**Excessive Network Dependency & Lack of Client-side Caching (Mobile App, Backend):** The application architecture relies too heavily on real-time network calls for nearly all interactions, including fetching basic ride details. The absence of effective client-side caching means data isn't persisted locally, causing the app to become unusable or sluggish in low-connectivity environments. This involves both 'Mobile App' for caching implementation and 'Backend' for designing APIs that support caching."
+    ],
+    "recommended_actions": [
+      {
+        "title": "Enhance OTP Delivery Reliability and Multi-Channel Fallback",
+        "team": "Backend, Ops",
+        "impact": "High",
+        "effort": "Medium",
+        "description": "Implement robust multi-channel OTP delivery logic with intelligent fallbacks (e.g., if SMS fails, automatically attempt WhatsApp, then email). Integrate a dedicated OTP monitoring system to track delivery rates and latency for all providers. Introduce server-side retry mechanisms with exponential backoff and diversify SMS gateway providers for better redundancy."
+      },
+      {
+        "title": "Redesign Mobile App OTP & Notification User Experience",
+        "team": "Mobile, Product",
+        "impact": "High",
+        "effort": "Medium",
+        "description": "Improve OTP input UI to prevent disappearance (e.g., make it sticky, auto-fill, or provide a 'copy OTP' button). Revamp notification display logic to prioritize critical alerts, prevent stack overflow, and offer granular user control over notification types and frequency (e.g., 'mute after first delay alert'). Address the 'forced notification' user complaint by offering clear opt-out options."
+      },
+      {
+        "title": "Implement Client-Side Caching for Ride Details & Offline Gracefulness",
+        "team": "Mobile, Backend",
+        "impact": "High",
+        "effort": "High",
+        "description": "Develop and integrate robust client-side caching for essential ride details (driver info, ETA, vehicle number, destination) to significantly reduce reliance on constant network calls. This will allow users to view current ride information even in low or no-connectivity scenarios, improving perceived performance and reliability. The Backend team needs to ensure APIs support caching strategies."
+      }
+    ],
+    "rating_recovery_estimate": "+0.4 to +0.6 stars",
+    "priority_rank": "P0 - Critical",
+    "affected_team": "Mobile App & Auth Infrastructure"
+  },
+  "Live Tracking": {
+    "primary_symptoms": [
+      "Inaccurate and Stale Vehicle Location & ETA: Users consistently report vehicles appearing suddenly, ETAs being wildly off, and location data being hours old or non-existent.",
+      "Unreliable Map Interface & Tracking Updates: The in-app map frequently freezes, gets stuck, or fails to display real-time vehicle movement, leading to tracking being perceived as non-functional.",
+      "Suboptimal Routing & Pickup/Drop-off Location Management: Complaints about 'worst routing location,' 'stupid pickup location,' and drivers dropping off before the designated spot indicate issues with the underlying routing logic and how pickup/drop-off points are managed and communicated.",
+      "Regression in Live Tracking Functionality Post-Update: Several users explicitly mention that core live tracking capabilities, which were present before, are now missing or degraded after recent app updates."
+    ],
+    "root_causes": [
+      "Stale/Inaccurate GPS Data Ingestion & Processing (Fleet Ops / Backend): The primary issue stems from unreliable GPS devices in vehicles, infrequent data transmission, or backend systems failing to ingest, process, and distribute real-time location data with minimal latency.",
+      "Inefficient Routing Algorithm & Map Data (Backend): Poor ETA calculations and 'worst routing location' complaints suggest an underlying routing engine using outdated map data, flawed pathfinding logic, or failing to factor in real-time traffic conditions effectively.",
+      "Mobile App UI/UX and Data Refresh Logic Regression (Mobile App / Product): The app's inability to display real-time updates ('map gets stuck,' 'hangs'), coupled with reports of functionality regression post-update, indicates issues with the mobile app's front-end logic for consuming, rendering, and refreshing location data, as well as overall stability."
+    ],
+    "recommended_actions": [
+      {
+        "title": "Optimize Vehicle GPS Data Ingestion & Real-time Processing",
+        "team": "Backend, Fleet Ops",
+        "impact": "High",
+        "effort": "Medium",
+        "description": "Implement robust mechanisms for more frequent (e.g., every 5-10 seconds) and reliable GPS data collection from in-vehicle devices. This includes evaluating device health, connectivity, and ensuring the backend processes and distributes this data to the mobile app APIs with minimal latency. Establish clear monitoring and alerting for data freshness and accuracy."
+      },
+      {
+        "title": "Enhance Routing Algorithm and Dynamic ETA Prediction",
+        "team": "Backend, Product",
+        "impact": "High",
+        "effort": "High",
+        "description": "Overhaul the routing algorithm to leverage up-to-date map data, incorporate real-time traffic conditions, and improve pathfinding logic for optimal routes. Develop a more sophisticated dynamic ETA model that considers current vehicle speed, traffic, historical trip data, and driver behavior. Implement A/B testing and continuous validation of ETA accuracy against actual trip times."
+      },
+      {
+        "title": "Revamp Mobile App Live Tracking UI/UX and Refresh Logic",
+        "team": "Mobile, Product",
+        "impact": "High",
+        "effort": "Medium",
+        "description": "Redesign the live tracking module in the mobile app to ensure smooth map rendering, reliable real-time vehicle movement updates, and an intuitive user interface. Address reported crashes/freezes. Re-implement missing functionalities (like shuttle location tracking post-upgrade). Add features such as pre-arrival notifications (e.g., 5 mins before arrival) and a clear timestamp indicating when the displayed location data was last updated."
+      }
+    ],
+    "rating_recovery_estimate": "+0.5 to +0.8 stars",
+    "priority_rank": "P0 - Critical",
+    "affected_team": "Driver Telematics & Geolocation Services"
+  },
+  "Driver Issues": {
+    "primary_symptoms": [
+      "Pervasive Driver Misconduct: Drivers consistently display rudeness, unprofessionalism, disrespect, and abusive behavior, often without apparent consequences.",
+      "Unreliable Trip Execution: Frequent and significant delays, unassigned cabs, driver no-shows, and highly inaccurate/fluctuating ETAs (e.g., 5 mins changing drastically to 30 mins).",
+      "Ineffective & Unresponsive Customer Support: Users report inability to reach support, calls not being answered, or receiving unhelpful responses, especially during critical trip-related emergencies.",
+      "Lack of Accountability & Feedback Mechanisms: Users feel unable to properly report issues or rate drivers, and when they do, there's no visible action or resolution (e.g., being marked 'No Show' despite waiting)."
+    ],
+    "root_causes": [
+      {
+        "cause": "Inadequate Driver Vetting & Management",
+        "explanation": "Weak or absent driver screening processes, insufficient behavioral and etiquette training, and lax enforcement of professional conduct protocols within the fleet operations, leading to onboarding and retention of unprofessional drivers.",
+        "area": "Fleet Ops"
+      },
+      {
+        "cause": "Unreliable Dispatch & ETA Prediction Systems",
+        "explanation": "Poorly optimized algorithms for assigning cabs and predicting arrival times, potentially exacerbated by drivers manipulating trip status, lack of robust real-time tracking, and inefficient re-assignment logic when issues arise. This impacts both the backend and mobile app's ability to provide accurate information.",
+        "area": "Backend, Data Science, Mobile App"
+      },
+      {
+        "cause": "Deficient Customer Support & Feedback Loop",
+        "explanation": "Understaffed and undertrained customer support teams, ineffective incident management systems, and a poorly designed in-app feedback mechanism (including issues like forced microphone permissions) that makes it difficult for users to report issues and receive timely resolution.",
+        "area": "Ops, Product, Mobile App"
+      }
+    ],
+    "recommended_actions": [
+      {
+        "title": "Implement Robust Driver Vetting & Continuous Training Program",
+        "team": "Ops, Product",
+        "impact": "High",
+        "effort": "High",
+        "description": "Strengthen driver background checks, implement mandatory behavioral and etiquette training modules with regular refreshers, and establish a clear code of conduct with strict disciplinary actions for violations. Develop a system for continuous performance monitoring, including linking customer feedback directly to driver performance reviews."
+      },
+      {
+        "title": "Optimize Real-time ETA Algorithm & Dispatch System",
+        "team": "Backend, Mobile, Data Science",
+        "impact": "High",
+        "effort": "High",
+        "description": "Refine the ETA prediction algorithm using more real-time traffic data, accurate GPS location, and historical performance patterns. Implement stricter controls and validation for driver-side status updates to prevent manipulation. Enhance dispatch logic to minimize assignment failures and drastic ETA changes, with automated re-assignment protocols for late or unavailable drivers. Improve driver-side app reliability for consistent status updates."
+      },
+      {
+        "title": "Overhaul Customer Support & In-App Feedback Mechanism",
+        "team": "Ops, Product, Mobile",
+        "impact": "High",
+        "effort": "Medium",
+        "description": "Significantly increase customer support staffing, provide comprehensive training on de-escalation and issue resolution, and implement clear escalation protocols for critical issues (e.g., safety, extreme delays). Develop an intuitive in-app reporting system for driver issues and trip problems, allowing users to easily submit detailed feedback and track its resolution. Address unnecessary app permissions (like microphone access) by making them optional or removing them if not critical for core functionality."
+      }
+    ],
+    "rating_recovery_estimate": "+0.6 to +1.0 stars",
+    "priority_rank": "P1 - High",
+    "affected_team": "Vendor Operations & Fleet Management"
+  },
+  "App Performance & Crashes": {
+    "primary_symptoms": [
+      "App consistently fails to open, crashes immediately on launch, or displays a blank screen.",
+      "Users are frequently forced to uninstall and reinstall the app (after updates, after a few days, or periodically) to get it working.",
+      "App frequently freezes, gets stuck, or experiences significant slowdowns, especially after updates or prolonged use.",
+      "Misleading error message 'app was not downloaded from play store' preventing app launch and leading to forced reinstallation."
+    ],
+    "root_causes": [
+      {
+        "cause": "Mobile App: Persistent Data & State Management Flaws",
+        "explanation": "The app likely struggles with reading/writing local data, managing its internal state across launches/updates, or migrating data schema. This leads to crashes on startup, blank screens, and the need for frequent reinstalls (e.g., update failures, 'not downloaded' error)."
+      },
+      {
+        "cause": "Mobile App: Lifecycle & Resource Management Bugs",
+        "explanation": "Issues with how the app handles being backgrounded, foregrounded, or re-initialized after a period of inactivity. This could also include memory leaks or excessive resource consumption, leading to freezes, slowness, and crashes after some operational time or on specific devices."
+      },
+      {
+        "cause": "Mobile App: Inadequate Device/OS Compatibility Testing & Update Process",
+        "explanation": "Evidenced by crashes on specific devices (Vivo V25 Pro), mention of Android 17 compatibility, and issues appearing 'after the update'. The testing matrix might be insufficient, or the deployment process doesn't ensure backward compatibility and smooth transitions for existing installations."
+      }
+    ],
+    "recommended_actions": [
+      {
+        "title": "Implement Robust Data Migration and State Management",
+        "team": "Mobile",
+        "impact": "High",
+        "effort": "High",
+        "description": "Conduct a thorough audit of how the app handles local data persistence, state management, and schema migrations across updates. Implement robust versioning and migration strategies for local data (e.g., using Room Persistence Library with proper migration paths). Ensure the app can gracefully recover from corrupted states or safely clear user-specific data upon fatal errors without requiring a full reinstall. Investigate and fix the 'not downloaded from Play Store' error, potentially related to integrity checks."
+      },
+      {
+        "title": "Optimize App Lifecycle, Memory, and Performance",
+        "team": "Mobile",
+        "impact": "High",
+        "effort": "Medium",
+        "description": "Profile the app for memory leaks, CPU usage, and UI rendering performance. Optimize background processes, network calls, and UI thread operations to prevent ANRs (Application Not Responding) and ensure smooth responsiveness. Implement robust error handling and crash reporting with detailed stack traces to pinpoint resource-related issues. Specifically test how the app behaves after being in the background for extended periods and on devices with varying memory specifications."
+      },
+      {
+        "title": "Strengthen Pre-Release QA & Compatibility Testing",
+        "team": "Mobile, QA, Product",
+        "impact": "Medium",
+        "effort": "Medium",
+        "description": "Expand the QA matrix to include a wider range of Android devices (various manufacturers, OS versions including latest betas like Android 17) and real-world network conditions. Implement a more rigorous beta testing program, potentially leveraging power users or a dedicated internal dogfooding group, to test app updates thoroughly before public release. Focus on 'update from previous version' scenarios to catch issues where existing installations fail after an update. Ensure a comprehensive crash reporting system is in place and actively monitored during beta cycles."
+      }
+    ],
+    "rating_recovery_estimate": "+0.4 to +0.6 stars",
+    "priority_rank": "P2 - Medium",
+    "affected_team": "Mobile Platform & Release Engineering"
+  }
+}
