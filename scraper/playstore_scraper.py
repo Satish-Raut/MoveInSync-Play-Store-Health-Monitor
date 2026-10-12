@@ -62,9 +62,7 @@ def serialize_review(review: dict) -> dict:
     return serialized
 
 
-# ─────────────────────────────────────────────────────────────────
 # App Info
-# ─────────────────────────────────────────────────────────────────
 
 def fetch_app_info() -> dict:
     """Fetch current app metadata (rating, installs, version, etc.)."""
@@ -82,9 +80,7 @@ def fetch_app_info() -> dict:
         return {}
 
 
-# ─────────────────────────────────────────────────────────────────
 # Core Scraper
-# ─────────────────────────────────────────────────────────────────
 
 def scrape_reviews_by_rating(star_rating: int, max_count: int) -> list:
     """
@@ -166,9 +162,7 @@ def scrape_all_reviews() -> list:
     return all_reviews
 
 
-# ─────────────────────────────────────────────────────────────────
 # Save Output
-# ─────────────────────────────────────────────────────────────────
 
 def save_reviews(all_reviews: list, app_info: dict):
     """Save reviews to JSON and CSV, and write scrape metadata."""

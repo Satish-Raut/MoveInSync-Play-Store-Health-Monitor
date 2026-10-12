@@ -32,6 +32,10 @@ PROCESSED_CSV_PATH = os.path.join(PROCESSED_DATA_DIR, "reviews_clean.csv")
 PROCESSED_JSON_PATH = os.path.join(PROCESSED_DATA_DIR, "reviews_clean.json")
 CLEAN_METADATA_PATH = os.path.join(PROCESSED_DATA_DIR, "clean_metadata.json")
 
+ANALYZED_CSV_PATH = os.path.join(PROCESSED_DATA_DIR, "reviews_analyzed.csv")
+ANALYZED_JSON_PATH = os.path.join(PROCESSED_DATA_DIR, "reviews_analyzed.json")
+ANALYSIS_SUMMARY_PATH = os.path.join(PROCESSED_DATA_DIR, "analysis_summary.json")
+
 # ENV variables
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")

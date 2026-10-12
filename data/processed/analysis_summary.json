@@ -1,0 +1,137 @@
+{
+  "analysis_timestamp": "2026-10-13T02:30:04.523849",
+  "total_analyzed": 2400,
+  "sentiment_distribution": {
+    "Positive": 1060,
+    "Negative": 822,
+    "Neutral": 518
+  },
+  "category_distribution": {
+    "Positive Feedback": 748,
+    "Other": 614,
+    "Cab Booking Issues": 277,
+    "Live Tracking": 162,
+    "Notifications & OTP": 145,
+    "App Performance & Crashes": 121,
+    "Driver Issues": 121,
+    "UI & Navigation": 116,
+    "Login & Authentication": 77,
+    "Safety Concerns": 17,
+    "Billing & Payroll": 2
+  },
+  "divergence_metrics": {
+    "total_divergent": 209,
+    "sarcasm_high_rating_negative_text": 31,
+    "accidental_low_rating_positive_text": 178
+  },
+  "priority_matrix": [
+    {
+      "category": "Cab Booking Issues",
+      "total_reviews": 277,
+      "negative_reviews": 184,
+      "negative_share_pct": 15.3,
+      "avg_star_rating": 2.0,
+      "avg_sentiment": -0.209,
+      "thumbs_up_total": 108,
+      "severity_score": 6.92,
+      "priority_score": 85.5,
+      "priority_rank": "P0 - Critical"
+    },
+    {
+      "category": "Notifications & OTP",
+      "total_reviews": 145,
+      "negative_reviews": 111,
+      "negative_share_pct": 9.2,
+      "avg_star_rating": 1.77,
+      "avg_sentiment": -0.1,
+      "thumbs_up_total": 90,
+      "severity_score": 7.04,
+      "priority_score": 83.8,
+      "priority_rank": "P0 - Critical"
+    },
+    {
+      "category": "Live Tracking",
+      "total_reviews": 162,
+      "negative_reviews": 93,
+      "negative_share_pct": 7.8,
+      "avg_star_rating": 2.23,
+      "avg_sentiment": -0.085,
+      "thumbs_up_total": 79,
+      "severity_score": 6.32,
+      "priority_score": 75.0,
+      "priority_rank": "P0 - Critical"
+    },
+    {
+      "category": "Driver Issues",
+      "total_reviews": 121,
+      "negative_reviews": 76,
+      "negative_share_pct": 6.3,
+      "avg_star_rating": 2.02,
+      "avg_sentiment": -0.152,
+      "thumbs_up_total": 27,
+      "severity_score": 6.77,
+      "priority_score": 50.1,
+      "priority_rank": "P1 - High"
+    },
+    {
+      "category": "Login & Authentication",
+      "total_reviews": 77,
+      "negative_reviews": 60,
+      "negative_share_pct": 5.0,
+      "avg_star_rating": 1.81,
+      "avg_sentiment": -0.109,
+      "thumbs_up_total": 23,
+      "severity_score": 7.0,
+      "priority_score": 48.5,
+      "priority_rank": "P1 - High"
+    },
+    {
+      "category": "App Performance & Crashes",
+      "total_reviews": 121,
+      "negative_reviews": 90,
+      "negative_share_pct": 7.5,
+      "avg_star_rating": 1.95,
+      "avg_sentiment": -0.097,
+      "thumbs_up_total": 15,
+      "severity_score": 6.77,
+      "priority_score": 43.4,
+      "priority_rank": "P2 - Medium"
+    },
+    {
+      "category": "Billing & Payroll",
+      "total_reviews": 2,
+      "negative_reviews": 2,
+      "negative_share_pct": 0.2,
+      "avg_star_rating": 1.0,
+      "avg_sentiment": -0.426,
+      "thumbs_up_total": 0,
+      "severity_score": 8.85,
+      "priority_score": 39.9,
+      "priority_rank": "P2 - Medium"
+    },
+    {
+      "category": "UI & Navigation",
+      "total_reviews": 116,
+      "negative_reviews": 66,
+      "negative_share_pct": 5.5,
+      "avg_star_rating": 2.25,
+      "avg_sentiment": -0.041,
+      "thumbs_up_total": 16,
+      "severity_score": 6.21,
+      "priority_score": 39.6,
+      "priority_rank": "P2 - Medium"
+    },
+    {
+      "category": "Safety Concerns",
+      "total_reviews": 17,
+      "negative_reviews": 10,
+      "negative_share_pct": 0.8,
+      "avg_star_rating": 2.59,
+      "avg_sentiment": 0.031,
+      "thumbs_up_total": 0,
+      "severity_score": 5.55,
+      "priority_score": 25.4,
+      "priority_rank": "P2 - Medium"
+    }
+  ]
+}
