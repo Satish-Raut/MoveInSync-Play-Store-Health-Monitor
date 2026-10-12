@@ -1,0 +1,40 @@
+# Git ignore rules for MoveInSync Play Store Health Monitor
+
+# ── Virtual Environment ────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+
+# ── Environment Variables (secrets) ───────────────────────────
+.env
+
+# ── Python Cache ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# ── Data Files (raw data — can be large) ──────────────────────
+# Comment these out if you want to commit data to the repo
+data/raw/*.json
+data/raw/*.csv
+data/processed/*.csv
+data/processed/*.json
+
+# ── Keep folder structure but not contents ────────────────────
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# ── IDE / OS Files ─────────────────────────────────────────────
+.idea/
+.vscode/
+*.DS_Store
+Thumbs.db
+
+# ── Streamlit ──────────────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ── Reports (generated files) ──────────────────────────────────
+report/output/*.pdf
