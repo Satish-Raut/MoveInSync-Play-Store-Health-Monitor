@@ -1,4 +1,5 @@
 # MoveInSync Play Store Health Monitor — Configuration
+import os
 
 # Target App Details
 # Actual URL: https://play.google.com/store/apps/details?id=com.moveinsync.ets&hl=en_IN
@@ -17,8 +18,21 @@ SCRAPE_SORT = "newest"           # Sort: "newest" | "most_relevant" | "rating"
 # Star ratings to scrape (scrape each separately to ensure coverage of 1-star reviews)
 SCRAPE_RATINGS = [1, 2, 3, 4, 5]
 
+# File Paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+RAW_DATA_DIR = os.path.join(DATA_DIR, "raw")
+PROCESSED_DATA_DIR = os.path.join(DATA_DIR, "processed")
+
+RAW_JSON_PATH = os.path.join(RAW_DATA_DIR, "reviews_raw.json")
+RAW_CSV_PATH = os.path.join(RAW_DATA_DIR, "reviews_raw.csv")
+SCRAPE_METADATA_PATH = os.path.join(RAW_DATA_DIR, "scrape_metadata.json")
+
+PROCESSED_CSV_PATH = os.path.join(PROCESSED_DATA_DIR, "reviews_clean.csv")
+PROCESSED_JSON_PATH = os.path.join(PROCESSED_DATA_DIR, "reviews_clean.json")
+CLEAN_METADATA_PATH = os.path.join(PROCESSED_DATA_DIR, "clean_metadata.json")
+
 # ENV variables
-import os
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 

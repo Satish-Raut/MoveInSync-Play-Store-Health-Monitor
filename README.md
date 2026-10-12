@@ -18,7 +18,7 @@ This tool automatically:
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/your-username/playstore-health-monitor.git
+https://github.com/Satish-Raut/MoveInSync-Play-Store-Health-Monitor.git
 cd playstore-health-monitor
 ```
 
